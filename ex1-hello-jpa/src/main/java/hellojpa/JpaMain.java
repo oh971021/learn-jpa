@@ -1,4 +1,4 @@
-package hellojpa;
+//package hellojpa;
 
 import org.hibernate.annotations.common.reflection.XMember;
 
@@ -8,30 +8,41 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class JpaMain {
-    public static void main(String[] args) {
+//public class JpaMain {
+//    public static void main(String[] args) {
         // Application Loading 시점에 연결
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-
-        try{
-            // 영속
-            Member member = em.find(Member.class, 150L);
-            member.setName("AAAAA"); // Dirty Checking
-
-            em.clear(); // 1차 캐시, 쓰기 지연 SQL 저장소 초기화 및 영속 컨텍스트 제외
-
-            Member member2 = em.find(Member.class, 150L);
-
-            System.out.println("==========");
-            tx.commit();
-        } catch (Exception e) {
-            tx.rollback();
-        } finally {
-            em.close();
-        }
-        emf.close();
-    }
-}
+//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+//        EntityManager em = emf.createEntityManager();
+//        EntityTransaction tx = em.getTransaction();
+//        tx.begin();
+//
+//        try{
+//            Member member1 = new Member();
+//            member1.setUsername("A");
+//
+//            Member member2 = new Member();
+//            member2.setUsername("B");
+//
+//            Member member3 = new Member();
+//            member3.setUsername("C");
+//
+//            System.out.println("=====");
+//
+//            em.persist(member1);
+//            em.persist(member2);
+//            em.persist(member3);
+//
+//            System.out.println("member1.id = " + member1.getId());
+//            System.out.println("member2.id = " + member2.getId());
+//            System.out.println("member3.id = " + member3.getId());
+//            System.out.println("=====");
+//
+//            tx.commit();
+//        } catch (Exception e) {
+//            tx.rollback();
+//        } finally {
+//            em.close();
+//        }
+//        emf.close();
+//    }
+//}

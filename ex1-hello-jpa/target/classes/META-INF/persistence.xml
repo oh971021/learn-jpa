@@ -16,7 +16,7 @@
             <property name="javax.persistence.jdbc.user" value="sa"/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <!-- DB url -->
-            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/jpashop"/>
             <!-- DB Dialect 설정 -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
 
@@ -30,7 +30,7 @@
             <!-- SQL 모아 놓는 배치 크기 -> Transaction Commit() 시에 발송 됨 -->
             <property name="hibernate.jdbc.batch_size" value="10"/>
             <!-- application 실행 시 ddl 전략 -->
-            <!-- <property name="hibernate.hbm2ddl.auto" value="create"/>-->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
         </properties>
     </persistence-unit>
 </persistence>
