@@ -1,30 +1,26 @@
 package hellojpa;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
-//@Entity(name = "Entity2")
-//@SequenceGenerator(
-//        name="member_seq_generator",
-//        sequenceName = "member_seq", // 매핑 할 데이터베이스 시퀀스 이름
-//        initialValue = 1,
-//        allocationSize = 50 // 한번 호출 시 증가하는 수 (default: 50)
-//)
+@Entity
 public class Member {
 
-    @Id // PK 셋팅
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "member_seq_generator")
+    @Id @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "name", nullable = false) // DB Column명
+    @Column(name = "USERNAME")
     private String username;
 
-    // JPA는 기본 생성자가 있어야 함.
-    public Member() {}
+//    @Column(name = "TEAM_ID")
+//    private Long teamId;
+
+    // 객체 연관관계 사용
+        // JPA에게 연관관계(?:?)를 알려줘야 한다.
+    // Many (N) : One (1)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 
     public Long getId() {
         return id;
@@ -40,5 +36,13 @@ public class Member {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
